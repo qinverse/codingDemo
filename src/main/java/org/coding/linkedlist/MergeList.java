@@ -1,4 +1,4 @@
-package org.coding.list;
+package org.coding.linkedlist;
 
 import org.coding.node.MyNode;
 
