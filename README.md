@@ -16,4 +16,17 @@
 - 代码格式化：IDEA 规开发工具
 
 ## 📁 目录结构
-
+codingDemo/
+├── README.md
+├── array/
+│ └── MoveZeroes.java
+├── linkedlist/
+│ └── ReverseLinkedList.java
+├── tree/
+│ └── MaxDepth.java
+├── dp/
+│ └── ..
+├── contest/
+│ └── ..
+└── utils/
+└── node
