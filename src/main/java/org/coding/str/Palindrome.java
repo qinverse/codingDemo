@@ -90,4 +90,36 @@ public class Palindrome {
         // right - left - 1 是回文的实际长度
         return right - left - 1;
     }
+
+    //中心扩展法
+    public String cneterExpand(String str) {
+        if (str == null || str.length() < 1) return "";
+        int start = 0, end = 0;
+        for (int i = 0; i < str.length(); i++) {
+            //奇数长度
+            int l1 = getN(str, i, i);
+            //偶数长度
+            int l2 = getN(str, i, i + 1);
+            int n = Math.max(l1, l2);
+            if (n > end - start) {
+                start = i - (n-1)/2;
+                end = i + n/2 ;
+            }
+        }
+        return str.substring(start, end + 1);
+    }
+
+    public int getN(String str, int left, int right) {
+        while (left >= 0 && right < str.length()) {
+            if (str.charAt(left) == str.charAt(right)) {
+                left--;
+                right++;
+            } else {
+                break;
+            }
+
+        }
+        return right - left - 1;
+    }
+
 }
