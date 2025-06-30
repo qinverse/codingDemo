@@ -8,9 +8,11 @@ public class StrConvert {
 
        //初始化
        for (int i = 0; i <= m; i++) {
+          //将 word1 的前 i 个字符变成空串，只能执行 i 次删除。
          dp[i][0] = i;
        }
        for (int j = 0; j <= n; j++) {
+           //将空串变成 word2 的前 j 个字符，只能执行 j 次插入。
            dp[0][j] = j;
        }
        //状态转移
