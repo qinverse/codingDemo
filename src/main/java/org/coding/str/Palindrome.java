@@ -122,4 +122,34 @@ public class Palindrome {
         return right - left - 1;
     }
 
+
+    //中心扩展法
+    public String longestPalindrome(String s) {
+        int start = 0 , end = 0;
+        for (int i = 0; i < s.length(); i++) {
+            //奇数长度
+            int l1 = getL(s, i, i);
+            //偶数长度
+            int l2 = getL(s, i, i+ 1);
+            int l = Math.max(l1, l2);
+            if (l > end- start) {
+                start = i- (l-1)/2;
+                end = i+ l/2 ;
+            }
+        }
+        return s.substring(start, end + 1);
+    }
+
+    int getL(String s, int left, int right) {
+        while (left >= 0 && right < s.length()) {
+            if (s.charAt(left) == s.charAt(right)) {
+                left--;
+                right++;
+            } else {
+                break;
+            }
+        }
+        return right - left - 1;
+    }
+
 }

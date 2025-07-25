@@ -1,45 +1,42 @@
 package org.coding;
 
 import java.util.*;
+import java.util.concurrent.Callable;
 
 public class Main {
     public static void main(String[] args) {
+        String sss = "wwwwww" +
+                "\n" +
+                "2\n";
+        System.out.println(sss);
+        System.out.println(sss.trim());
+
         System.out.println("Hello world!");
     }
 
 
-
-
-
-
-
-    public void quickSort1(int[] numbers, int start, int end) {
-        if (start >= end) return;
-        int pivot = numbers[end];
-        int minLeft = start;
-        for (int i = start; i < end; i++) {
-            if (numbers[i] <= pivot) {
-                if (i != minLeft) {
-                    int tmp = numbers[minLeft];
-                    numbers[minLeft] = numbers[i];
-                    numbers[i] = tmp;
+    /**
+     * '('，')'，'{'，'}'，'['，']'
+     * @param s
+     * @return
+     */
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        for (Character c : s.toCharArray()) {
+            if (c == '(') {
+                stack.push(')');
+            } else if (c=='{') {
+                stack.push('}');
+            } else if (c=='[') {
+                stack.push(']');
+            } else {
+                if (stack.isEmpty() || stack.pop() != c) {
+                    return false;
                 }
-                minLeft++;
             }
         }
-        if (minLeft != end) {
-            int tmp = numbers[minLeft];
-            numbers[minLeft] = numbers[end];
-            numbers[end] = tmp;
-        }
-        quickSort1(numbers, start, minLeft - 1);
-        quickSort1(numbers, minLeft + 1, end);
+        return stack.isEmpty();
     }
-
-
-
-
-
 
 
 }
