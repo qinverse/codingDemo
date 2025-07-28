@@ -24,12 +24,12 @@ public class GenerateParenthesis {
         if (open < n) {
             cur.append('(');
             backtrack(ans, cur, open + 1, close, n);
-//            cur.deleteCharAt(cur.length() - 1);
+            cur.deleteCharAt(cur.length() - 1);
         }
         if (open > close) {
             cur.append(')');
             backtrack(ans, cur, open, close + 1, n);
-//            cur.deleteCharAt(cur.length() - 1);
+            cur.deleteCharAt(cur.length() - 1);
         }
     }
 
