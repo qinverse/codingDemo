@@ -82,4 +82,45 @@ public class Permutations {
             used[i] = false;
         }
     }
+
+    /**
+     * 下一个排列
+     * 其元素按升序排列
+     * 必须 原地 修改，只允许使用额外常数空间。
+     *
+     * @param nums
+     */
+    public void nextPermutation(int[] nums) {
+        int n = nums.length;
+        int i = n - 2;
+        // Step 1: 从后向前找第一个下降的位置 i：
+        while (i>= 0 && nums[i] >= nums[i+1]) {
+            i--;
+        }
+        if (i>= 0) {
+            int j = n-1;
+            // Step 2: 从后向前找第一个大于 nums[i] 的 j
+            while (j>= 0 && nums[j] <= nums[i]) {
+                j--;
+            }
+            // Step 3: 交换 nums[i] 和 nums[j]
+            swap(nums, i, j);
+        }
+        // Step 4: 反转 i+1 后的所有元素（因为是降序）
+        reverse(nums, i + 1, n - 1);
+    }
+    private void swap(int[] nums, int i, int j) {
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
+    }
+    private void reverse(int[] nums, int start, int end) {
+        while (start < end) {
+            swap(nums, start, end);
+            start++;
+            end--;
+        }
+    }
+
+
 }
